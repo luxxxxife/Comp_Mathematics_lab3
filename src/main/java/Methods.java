@@ -1,8 +1,8 @@
 public class Methods {
 
-    //Метод хорд
+    // 弦法
     public static String horda(double a, double b, double e) {
-        if(f(a) * f(b) > 0) return "в данном интервале нет корней.";
+        if(f(a) * f(b) > 0) return "此范围内无解.";
         double x_prev, x_curr = 0;
         do {
             x_prev = x_curr;
@@ -16,15 +16,15 @@ public class Methods {
             }
                 //if ((f(x_curr) > 0) && (f(b) < 0))
 //            } else {
-//                return "значения функции на концах отрезка имеют одинаковые знаки";
+//                return "线段末端的函数值具有相同的符号";
 //            }
         } while ((Math.abs(x_curr - x_prev) > e) && (f(x_curr) > e));
         return Double.toString(x_curr);
     }
 
-    // Метод секущих
+    // 割线法
     public static String sekushie(double x_prev, double x_curr, double e) {
-        if(f(x_prev) * f(x_curr) > 0) return "невозможно выбрать начальное приближение";
+        if(f(x_prev) * f(x_curr) > 0) return "无法选择初始近似值";
         double x_next = x_curr - (x_curr - x_prev) * f(x_curr) / (f(x_curr) - f(x_prev));
         while ((Math.abs(x_next - x_curr) > e)){
             x_prev = x_curr;
@@ -34,10 +34,10 @@ public class Methods {
         return Double.toString(x_next);
     }
 
-    // Метод простых итераций
+    // 简单迭代法
     public static String iteraz(double a, double b, double e) {
         double alf[] = proizvod(a, b);
-        if(f(a) * f(b) > 0) return "в данном интервале нет корней.";
+        if(f(a) * f(b) > 0) return "此范围内没有根.";
         double x_curr = alf[1], x_next ;
         x_next = x_curr + alf[0] * f(x_curr);
 
